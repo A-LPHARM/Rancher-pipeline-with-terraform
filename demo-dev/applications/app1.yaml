@@ -9,7 +9,7 @@ spec:
   project: default
   sources:
     # Chart from Chart Repo
-    - chart: bitnami
+    - chart: nginx
       repoURL: https://charts.bitnami.com/bitnami
       targetRevision: 16.0.7
       helm:
