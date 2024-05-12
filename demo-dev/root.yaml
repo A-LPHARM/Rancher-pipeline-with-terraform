@@ -5,9 +5,10 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
+    namespace: default
   source:
     path: demo-dev/applications
-    repoURL: https://github.com/A-LPHARM/Rancher-pipeline-with-terraform
+    repoURL: https://github.com/A-LPHARM/Rancher-pipeline-with-terraform.git
     targetRevision: HEAD
     directory: {}
   project: default
