@@ -7,18 +7,14 @@ spec:
   destination:
     server: https://kubernetes.default.svc
   project: default
-  sources:
-    # Chart from Chart Repo
-    - chart: kube-prometheus-stack
-      repoURL: https://prometheus-community.github.io/helm-charts
-      targetRevision: 58.5.0
-      helm:
-        values: |
-          replicaCount: 1
-    # Values from Git
-    - repoURL: 'https://github.com/A-LPHARM/Rancher-pipeline-with-terraform.git'
-      targetRevision: HEAD
-      ref: values
+  source:
+     # Chart from Chart Repo
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 58.5.0
+    helm:
+      chart: kube-prometheus-stack
+      values: |
+        replicaCount: 3
   syncPolicy:
     automated:
       prune: true
