@@ -9,10 +9,10 @@ spec:
   project: default
   source:
      # Chart from Chart Repo
+    chart: kube-prometheus-stack
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 58.5.0
     helm:
-      chart: kube-prometheus-stack
       values: |
         replicaCount: 3
   syncPolicy:
