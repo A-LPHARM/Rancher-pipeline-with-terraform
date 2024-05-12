@@ -1,12 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: hello-world-stage
-  namespace: argocd
+  name: mointoring
+  namespace: default
 spec:
   destination:
-    namespace: stage
-    name: kind
+    server: https://kubernetes.default.svc
   project: default
   sources:
     # Chart from Chart Repo
@@ -19,12 +18,10 @@ spec:
         - $values/applications/app1.yaml
         - $values/applications/app2.yaml
     # Values from Git
-    - repoURL: 'https://github.com/A-LPHARM/Rancher-pipeline-with-terraform'
+    - repoURL: 'https://github.com/A-LPHARM/Rancher-pipeline-with-terraform/tree/main/demo-dev'
       targetRevision: HEAD
       ref: values
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
