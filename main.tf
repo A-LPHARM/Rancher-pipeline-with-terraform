@@ -22,7 +22,20 @@ data "kubectl_file_documents" "argocd" {
   content = data.http.manifestfile.response_body
 }
 
+# Namespace resource for argocd
+resource "kubectl_manifest" "argocd_namespace" {
+  yaml_body = <<YAML
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argocd
+YAML
+}
+
+# Apply ArgoCD manifests
 resource "kubectl_manifest" "argocd" {
-  for_each  = data. kubectl_file_documents.argocd.manifests
+  for_each  = data.kubectl_file_documents.argocd.manifests
   yaml_body = each.value
+  override_namespace = "argocd"
+  depends_on = [kubectl_manifest.argocd_namespace]
 }
