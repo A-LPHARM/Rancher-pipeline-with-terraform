@@ -1,5 +1,0 @@
-auth:
-  database: my-mariadb1
-  password: test54321
-  username: admin
-  rootPassword: sharp
