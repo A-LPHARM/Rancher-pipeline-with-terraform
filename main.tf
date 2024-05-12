@@ -18,11 +18,11 @@ data "http" "manifestfile" {
   url = "https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml"
 }
 
-data "kubectl_file_documents" "alb_crds" {
+data "kubectl_file_documents" "argocd" {
   content = data.http.manifestfile.response_body
 }
 
-resource "kubectl_manifest" "alb_crds" {
-  for_each  = data. kubectl_file_documents.alb_crds.manifests
+resource "kubectl_manifest" "argocd" {
+  for_each  = data. kubectl_file_documents.argocd.manifests
   yaml_body = each.value
 }
