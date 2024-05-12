@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mointoring
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    # Chart from Chart Repo
+    - chart: prometheus-community
+      repoURL: https://prometheus-community.github.io/helm-charts
+      targetRevision: 25.20.1
+      helm:
+        values: |
+          replicaCount: 1
+    # Values from Git
+    - repoURL: 'https://github.com/A-LPHARM/Rancher-pipeline-with-terraform.git'
+      targetRevision: HEAD
+      ref: values
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
