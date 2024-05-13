@@ -99,8 +99,13 @@ the infrastructure
     ```
     mkdir -p ~/.kube
     ```
-    once the file is created in the .kube directory 
+    once the file is created in the .kube directory
 
+    ```
+    vi ~/.kube/config
+    ``` 
+    after adding the config file give the directory the specific rights
+    
     ```
     chmod 600 ~/.kube/config
 
