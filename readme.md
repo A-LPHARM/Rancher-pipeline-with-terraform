@@ -105,9 +105,10 @@ the infrastructure
     vi ~/.kube/config
     ``` 
     after adding the config file give the directory the specific rights
-    
+
     ```
     chmod 600 ~/.kube/config
+    ```
 
 11. **Create ArgoCD Application with Terraform:**
     ```bash
