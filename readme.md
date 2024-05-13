@@ -94,6 +94,15 @@ the infrastructure
     ```bash
     git clone https://github.com/A-LPHARM/Rancher-pipeline-with-terraform.git
     ```
+    Next is to copy the ~/.kube/config file from Rancher in linux-2 and send to Linux-2
+
+    ```
+    mkdir -p ~/.kube
+    ```
+    once the file is created in the .kube directory 
+
+    ```
+    chmod 600 ~/.kube/config
 
 11. **Create ArgoCD Application with Terraform:**
     ```bash
@@ -116,15 +125,21 @@ the infrastructure
 13. **Log in to ArgoCD:**
     ```bash
     kubectl config set-context --current --namespace=argocd
-    argocd login http://<ip_address>:30800
+    argocd login 44.204.119.208:30800
     ```
 
-14. **Deploy Application with Helm Charts via ArgoCD:**
+14. **Deploy the Development applications via kubectl**
+    ```bash
+    kubectl apply -f demo-dev/root.yaml
+    ```
+
+15. **Deploy Application with Helm Charts via ArgoCD:**
     ```bash
     argocd app create demo-app \
       --repo https://github.com/A-LPHARM/Rancher-pipeline-with-terraform.git \
       --path helmcharts/charttest1 \
       --dest-server https://kubernetes.default.svc \
       --dest-namespace default \
-      --sync-option
+      --sync-policy automated \
+      --self-heal
       ```
