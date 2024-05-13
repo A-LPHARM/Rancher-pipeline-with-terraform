@@ -76,14 +76,14 @@ the infrastructure
 7. **Start Rancher Server:**
    ```bash
    mkdir volume 
-   docker run -d --name rancher-server  -v ${PWD}/volume:/var/lib/rancher --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher
+   sudo docker run -d --name rancher-server  -v ${PWD}/volume:/var/lib/rancher --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher
    ```
 
 8. **Access Rancher UI:**
    - Wait for Rancher to start.
    - Extract the Rancher initial bootstrap password from the logs:
      ```bash
-     docker logs rancher-server | grep password
+     sudo docker logs rancher-server
      ```
 
 ## Deploying with Terraform, Helm, and ArgoCD
@@ -97,7 +97,7 @@ the infrastructure
 
 11. **Create ArgoCD Application with Terraform:**
     ```bash
-    cd Rancher-pipeline-with-terraform
+    cd Rancher-pipeline-with-terraform/argo-helm
     terraform init
     terraform apply --auto-approve
     ```
