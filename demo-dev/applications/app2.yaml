@@ -6,12 +6,13 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
+    namespace: argocd
   project: default
   source:
      # Chart from Chart Repo
     chart: kube-prometheus-stack
     repoURL: https://prometheus-community.github.io/helm-charts
-    targetRevision: 50.0.0
+    targetRevision: 58.6.0
     helm:
       values: |
         replicaCount: 3
