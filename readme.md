@@ -12,7 +12,7 @@ here is all the commands and codes for using Rancher to create a pipeline and de
    Get-NetAdapter
    Import-Module Hyper-V
    $net = Get-NetAdapter -Name "Ethernet"
-   New-VMSwitch -Name "External VM Switch" -AllowManagementOS $True -NetAdapterName $net.Name
+   New-VMSwitch -Name "virtual-network" -AllowManagementOS $True -NetAdapterName $net.Name
    ```
 
 2. **Create Virtual Machines on Hyper-V:**
@@ -45,8 +45,8 @@ the infrastructure
 
 3. **Set Up DVD Drive for Ubuntu Server ISO:**
    ```powershell
-   Set-VMDvdDrive -VMName "linux-1" -ControllerNumber 1 -Path "C:\temp\ubuntu-20.04.3-live-server-amd64.iso"
-   Set-VMDvdDrive -VMName "linux-2" -ControllerNumber 1 -Path "C:\temp\ubuntu-20.04.3-live-server-amd64.iso"
+   Set-VMDvdDrive -VMName "linux-1" -ControllerNumber 1 -Path "C:\temp\ubuntu-24.04-desktop-amd64.iso"
+   Set-VMDvdDrive -VMName "linux-2" -ControllerNumber 1 -Path "C:\temp\ubuntu-24.04-desktop-amd64.iso"
    ```
 
 4. **Start Virtual Machines:**
